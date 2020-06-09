@@ -1,13 +1,15 @@
 let flock;
 
+let mortality = 0.5;
+
 function setup() {
     createCanvas(700, 700);
     createP("Drag the mouse to generate new boids.");
 
     flock = new Flock();
     // Add an initial set of boids into the system
-    for (let i = 0; i < 200; i++) {
-        let infection = new Infection(200, 0.2, 0)
+    for (let i = 0; i < 300; i++) {
+        let infection = new Infection(200, mortality, 0)
         if (i < 2) {
             infection.startInfection();
         }
@@ -21,10 +23,11 @@ function draw() {
     flock.run();
 }
 
+
 // Add a new boid into the System
 function mouseDragged() {
 
-    let infection = new Infection(200, 0.2, 0)
+    let infection = new Infection(200, mortality, 0)
     flock.addBoid(new Boid(mouseX, mouseY, infection));
 }
 
@@ -67,6 +70,7 @@ class Boid {
         this.update();
         this.borders();
         this.render();
+        this.checkInfection(boids);
     }
     applyForce(force) {
         // We could add mass here if we want A = F / M
@@ -77,7 +81,7 @@ class Boid {
         let sep = this.separate(boids); // Separation
         let ali = this.align(boids); // Alignment
         let coh = this.cohesion(boids); // Cohesion
-        this.checkInfection(boids);
+
         // Arbitrarily weight these forces
         //sep.mult(1.5);
         //ali.mult(1.0);
@@ -85,8 +89,8 @@ class Boid {
 
         // My own
         sep.mult(1.5);
-        ali.mult(0);
-        coh.mult(0);
+        ali.mult(0.2);
+        coh.mult(0.2);
         // Add the force vectors to acceleration
         this.applyForce(sep);
         this.applyForce(ali);
@@ -239,7 +243,6 @@ class Boid {
     }
     // Infection
     checkInfection(boids) {
-        let count = 0;
         this.infection.checkInfection();
         for (let i = 0; i < boids.length; i++) {
             if (boids[i].infection.state == 1) {
@@ -263,7 +266,7 @@ class Infection {
         this.duration = duration
         this.mortality = mortality
         this.state = state
-        this.range = 50
+        this.range = 40
     }
     startInfection() {
         this.state = 1
