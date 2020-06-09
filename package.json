@@ -1,0 +1,19 @@
+{
+  "name": "glu-flock-infection-simulation",
+  "version": "1.0.0",
+  "description": "A simple simulation of the course of an infection within a flock with a certain behaviour.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martijnkunstman/GLU-flock-infection-simulation.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/martijnkunstman/GLU-flock-infection-simulation/issues"
+  },
+  "homepage": "https://github.com/martijnkunstman/GLU-flock-infection-simulation#readme"
+}
