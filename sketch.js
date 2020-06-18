@@ -104,7 +104,7 @@ class Flock {
             deceasedArray.push(graphData[a].deceased)
             recoveredArray.push(graphData[a].recovered)
         }
-        let xaxisstep = 20
+        let xaxisstep = 10
         labels = convertArrayLenght(labels, xaxisstep)
         uninfectedArray = convertArrayLenght(uninfectedArray, xaxisstep)
         infectedArray = convertArrayLenght(infectedArray, xaxisstep)
@@ -222,7 +222,7 @@ class Boid {
         push();
         translate(this.position.x, this.position.y);
         rotate(theta);
-        
+        /*
         if (this.infection.state != 3) {
         beginShape(LINES);
         stroke('rgba(0,0,0, 0.25)');
@@ -231,23 +231,23 @@ class Boid {
         vertex(0, (-this.r * 2 * d) - (this.r));
         endShape(CLOSE);
         }
-        
+        */
 
         beginShape();
         if (this.infection.state == 0) {
-            fill('rgba(0,0,255, 0.75)');
-            stroke('rgba(0,0,0, 0.25)');
+            fill('rgba(0,0,255, 1)');
+            stroke('rgba(0,0,0, 0)');
         }
         if (this.infection.state == 1) {
-            fill('rgba(255,100,0, 0.75)');
-            stroke('rgba(0,0,0, 0.25)');
+            fill('rgba(255,100,0, 1)');
+            stroke('rgba(0,0,0, 0)');
         }
         if (this.infection.state == 2) {
-            fill('rgba(0,255,0, 0.75)');
-            stroke('rgba(0,0,0, 0.25)');
+            fill('rgba(0,255,0, 1)');
+            stroke('rgba(0,0,0, 0)');
         }
         if (this.infection.state == 3) {
-            fill('rgba(255,0,0, 0.25)');
+            fill('rgba(255,0,0, 1)');
             stroke('rgba(0,0,0, 0)');
         }
         ellipse(0, 0, this.r * 2, this.r * 2);
