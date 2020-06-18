@@ -4,19 +4,19 @@
 
 let flock;
 let mortality = 0.4;
-let boidsTotal = 200;
+let boidsTotal = 150;
 let maxAge = 2500;
-let infectionRange = 35;
-let maxforce = 0.25;
-let maxspeed = 3;
-let initspeed = 3;
+let infectionRange = 45;
+let maxforce = 0.15;
+let maxspeed = 2;
+let initspeed = 2;
 let size = 400;
 let animationDuration = 10;
 let graphData = []
 
 let separate = 0.8;
-let align = 0.3;
-let cohesion = 0.3;
+let align = 0.2;
+let cohesion = 0.2;
 
 function setup() {
     randomSeed(99);
@@ -32,12 +32,13 @@ function setup() {
         flock.addBoid(b);
     }
 }
-
+/*
 function mousePressed() {
     for (a = 0; a < flock.boids.length; a++) {
         flock.boids[a].clicked();
     }
 }
+*/
 
 function draw() {
     background('rgb(255,255,255)');
@@ -451,7 +452,10 @@ canvasChart.id = "chart"
 canvasChart.width = size
 canvasChart.height = size
 canvasChart.style.border = "1px solid"
+canvasChart.style.order = 2
+
 body.appendChild(canvasChart)
+Chart.defaults.global.defaultFontSize = 10;
 let chart = new Chart(canvasChart, {
     type: 'line',
     data: {
